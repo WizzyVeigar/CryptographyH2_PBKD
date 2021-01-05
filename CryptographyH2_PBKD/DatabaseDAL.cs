@@ -12,10 +12,10 @@ namespace CryptographyH2_PBKD
     class DatabaseDAL
     {
         /// <summary>
-        /// Creates a user in a json file
+        /// Creates a user in a json file, or adds it to an existing file
         /// </summary>
         /// <param name="uName">Unique username</param>
-        /// <param name="psw">the users password</param>
+        /// <param name="psw">The users password</param>
         /// <returns></returns>
         public static string CreateUser(string uName, string psw)
         {
