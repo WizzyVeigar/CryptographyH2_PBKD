@@ -11,6 +11,12 @@ namespace CryptographyH2_PBKD
 {
     class DatabaseDAL
     {
+        /// <summary>
+        /// Creates a user in a json file
+        /// </summary>
+        /// <param name="uName">Unique username</param>
+        /// <param name="psw">the users password</param>
+        /// <returns></returns>
         public static string CreateUser(string uName, string psw)
         {
             List<User> users;
@@ -41,7 +47,6 @@ namespace CryptographyH2_PBKD
                 catch (Exception)
                 {
                     users = new List<User>() { user };
-
                 }
 
                 using (StreamWriter file = File.CreateText(Directory.GetCurrentDirectory() + @"\Database.json"))
@@ -52,13 +57,16 @@ namespace CryptographyH2_PBKD
                     return "User created successfully";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
+        /// <summary>
+        /// Gets all the users in the json file
+        /// </summary>
+        /// <returns></returns>
         private static List<User> GetUsers()
         {
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\Database.json");
@@ -97,6 +105,12 @@ namespace CryptographyH2_PBKD
             }
         }
 
+        /// <summary>
+        /// Method for logging in
+        /// </summary>
+        /// <param name="username">Attempted username to login with</param>
+        /// <param name="password">Attempted password to login with</param>
+        /// <returns>Returns true if the login is successful</returns>
         internal static bool Login(string username, string password)
         {
             User dbUser = GetUser(username);

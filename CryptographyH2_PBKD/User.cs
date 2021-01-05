@@ -26,7 +26,7 @@ namespace CryptographyH2_PBKD
 
         private string uPass;
         /// <summary>
-        /// The users password from the database in base64 string format
+        /// The user's password from the database in base64 string format
         /// </summary>
         public string UPass
         {
