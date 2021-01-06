@@ -53,7 +53,7 @@ namespace CryptographyH2_PBKD
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     serializer.Serialize(file, users);
-
+                    file.Close();
                     return "User created successfully";
                 }
             }
@@ -73,6 +73,7 @@ namespace CryptographyH2_PBKD
             string json = sr.ReadToEnd();
             if (json != null)
             {
+                sr.Close();
                 return JsonConvert.DeserializeObject<List<User>>(json);
             }
             return null;
